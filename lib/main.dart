@@ -63,7 +63,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
                   child: const Text(
-                    'TutorialKart',
+                    'Fragile Asset Tracker',
                     style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.w500,
