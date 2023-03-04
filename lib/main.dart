@@ -1,28 +1,38 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
-
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:firebase_database/firebase_database.dart';
 
-// ...
-
-await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-);
-
-
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
-    );
+        home: FutureBuilder(
+      future: _fbApp,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          print('You have an error! ${snapshot.error.toString()}');
+          return Text('Something went wrong!');
+        } else if (snapshot.hasData) {
+          return Home();
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    ));
   }
 }
 
@@ -32,6 +42,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _counter = 0;
+  void _incrementCounter(){
+    DatabaseReference _testRef = FirebaseDatabase.instance.ref().child("test");
+    _testRef.set("hello world ${Random().nextInt(100)}");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +56,7 @@ class _HomeState extends State<Home> {
       body: Center(
         child: TextButton(
           onPressed: () {
+            _incrementCounter();
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => MyStatefulWidget()));
           },
@@ -75,7 +91,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
                   child: const Text(
-                    'Fragile Asset Tracker',
+                    'TutorialKart',
                     style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.w500,
@@ -150,6 +166,49 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 }
 
-//add mymap to moved to mymap.dart
-//reffer following link
-//https://www.dbestech.com/tutorials/flutter-google-sign-in-firebase-auth-login
+//hello
+class MyMap extends StatefulWidget {
+  @override
+  State<MyMap> createState() => _MyMapState();
+}
+
+class _MyMapState extends State<MyMap> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+          child: Container(
+        child: Column(
+          children: [
+            Flexible(
+                child: FlutterMap(
+              options: MapOptions(center: LatLng(19.0760, 72.8777), zoom: 8),
+              children: [
+                TileLayer(
+                  urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                  userAgentPackageName: 'dev.fleaflet.flutter_map.example',
+                ),
+                MarkerLayer(
+                  markers: [
+                    Marker(
+                      point: LatLng(19.044876, 73.079747),
+                      width: 80,
+                      height: 80,
+                      builder: (context) => Icon(Icons.pin_drop),
+                    ),
+                    Marker(
+                      point: LatLng(19.046957, 72.911960),
+                      width: 80,
+                      height: 80,
+                      builder: (context) => Icon(Icons.pin_drop),
+                    ),
+                  ],
+                ),
+              ],
+            ))
+          ],
+        ),
+      )),
+    );
+  }
+}
