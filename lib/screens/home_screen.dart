@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fragileitemtrackingapp/providers/user_provider.dart';
 import 'package:fragileitemtrackingapp/screens/map_screen.dart';
+import 'package:fragileitemtrackingapp/screens/profile_screen.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen();
@@ -9,12 +12,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+    String username = "";
+
+  @override
+  void initState() {
+    super.initState();
+    addData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  addData() async {
+    UserProvider _userProvider = Provider.of(context, listen: false);
+    await _userProvider.refreshUser();
+  }
+
+
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     // Text('Search Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     MapScreen(),
-    Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    ProfileScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -27,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Flutter BottomNavigationBar Example'),
+          title: const Text('FragileAT'),
           backgroundColor: Colors.green
       ),
       body: Center(
