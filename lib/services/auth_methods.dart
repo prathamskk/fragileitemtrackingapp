@@ -32,8 +32,6 @@ class AuthMethods {
           name: name!,
           uid: user.user!.uid,
           username: username!,
-          followers: [],
-          following: [],
         );
 
         await _firestore.collection('users').doc(user.user!.uid).set(
