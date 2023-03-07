@@ -60,21 +60,21 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: 'Home',
-                backgroundColor: Colors.green
+                // backgroundColor: Colors.green
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Search',
-                backgroundColor: Colors.yellow
+                icon: Icon(Icons.map),
+                label: 'Map',
+                // backgroundColor: Colors.green
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Profile',
-
-              backgroundColor: Colors.blue,
+              // backgroundColor: Colors.green
             ),
           ],
-          type: BottomNavigationBarType.shifting,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.green,
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.black,
           iconSize: 40,
