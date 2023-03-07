@@ -43,6 +43,13 @@ dependencies:
   firebase_core: ^2.7.0
   firebase_database: ^10.0.14
   cloud_firestore: ^4.4.3
+  geolocator: ^9.0.2
+  flutter_launcher_icons: ^0.12.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "asset/icons/FAT_launcher_icon/1024.png"
 
 dev_dependencies:
   flutter_test:
