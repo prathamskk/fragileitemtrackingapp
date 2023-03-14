@@ -33,8 +33,16 @@ class _MapScreenState extends State<MapScreen> {
         return Future.error('Location Permissions are denied');
       }
     }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
     return await Geolocator.getCurrentPosition();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
