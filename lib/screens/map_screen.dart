@@ -94,7 +94,7 @@ class _MapScreenState extends State<MapScreen> {
           )),
       floatingActionButton: FloatingActionButton(
         onPressed: _getCurrentLocation,
-        tooltip: 'Increment',
+        tooltip: 'Get current location',
         child: const Icon(Icons.add),
       ),
     );
