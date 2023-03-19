@@ -18,6 +18,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final UserModel? user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: Center(
           child: Column(
             children: <Widget>[
@@ -36,8 +41,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: <Widget>[
                           OutlinedButton(
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: Colors.amberAccent,
-                              backgroundColor: Colors.red,
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.redAccent,
                               elevation: 8,
                               shadowColor: Colors.black,
                             ),

@@ -46,11 +46,17 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: Center(
           child: Column(
             children: [
               Center(
                 child: _position != null ? Text('Current Location: ' + _position.toString()) : Text('No Location Data'),
+
               ),
               Flexible(
                   child: FlutterMap(

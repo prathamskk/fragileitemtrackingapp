@@ -3,6 +3,8 @@ import 'package:fragileitemtrackingapp/providers/user_provider.dart';
 import 'package:fragileitemtrackingapp/screens/map_screen.dart';
 import 'package:fragileitemtrackingapp/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:fragileitemtrackingapp/screens/new_home_screen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen();
@@ -33,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    NewHomeScreen(),
     // Text('Search Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     MapScreen(),
     ProfileScreen()
@@ -48,10 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('FragileAT'),
-          backgroundColor: Colors.green
-      ),
+      // appBar: AppBar(
+      //     title: const Text('FragileAT'),
+      //     backgroundColor: Colors.green
+      // ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
