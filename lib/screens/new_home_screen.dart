@@ -30,7 +30,7 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
       setState(() {
         angleX = event.snapshot.value.toString();
         car.rotation.setValues(double.tryParse(angleX) ?? 0,
-            double.tryParse(angleY) ?? 0, double.tryParse(angleZ) ?? 0);
+            double.tryParse(angleZ) ?? 0, double.tryParse(angleY) ?? 0);
         car.updateTransform();
       });
     });
@@ -38,7 +38,7 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
       setState(() {
         angleY = event.snapshot.value.toString();
         car.rotation.setValues(double.tryParse(angleX) ?? 0,
-            double.tryParse(angleY) ?? 0, double.tryParse(angleZ) ?? 0);
+            double.tryParse(angleZ) ?? 0, double.tryParse(angleY) ?? 0);
         car.updateTransform();
       });
     });
@@ -46,7 +46,7 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
       setState(() {
         angleZ = event.snapshot.value.toString();
         car.rotation.setValues(double.tryParse(angleX) ?? 0,
-            double.tryParse(angleY) ?? 0, double.tryParse(angleZ) ?? 0);
+            double.tryParse(angleZ) ?? 0, double.tryParse(angleY) ?? 0);
         car.updateTransform();
       });
     });
