@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:fragileitemtrackingapp/services/auth_methods.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -55,7 +54,7 @@ class _MapScreenState extends State<MapScreen> {
           child: Column(
             children: [
               Center(
-                child: _position != null ? Text('Current Location: ' + _position.toString()) : Text('No Location Data'),
+                child: _position != null ? Text('Current Location: $_position') : const Text('No Location Data'),
 
               ),
               Flexible(
@@ -72,25 +71,25 @@ class _MapScreenState extends State<MapScreen> {
                         point: LatLng(19.044876, 73.079747),
                         width: 80,
                         height: 80,
-                        builder: (context) => Icon(Icons.pin_drop),
+                        builder: (context) => const Icon(Icons.pin_drop),
                       ),
                       Marker(
                         point: LatLng(19.046957, 72.911960),
                         width: 80,
                         height: 80,
-                        builder: (context) => Icon(Icons.pin_drop),
+                        builder: (context) => const Icon(Icons.pin_drop),
                       ),
                         _position != null ? Marker(
                         point: LatLng( _position!.latitude, _position!.longitude),
                         width: 80,
                         height: 80,
-                        builder: (context) => Icon(Icons.pin_drop),
+                        builder: (context) => const Icon(Icons.pin_drop),
                       ):
                         Marker(
                           point: LatLng(0,0),
                           width: 80,
                           height: 80,
-                          builder: (context) => Icon(Icons.pin_drop),
+                          builder: (context) => const Icon(Icons.pin_drop),
                         ),
                     ],
                   ),

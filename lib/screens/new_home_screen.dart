@@ -1,9 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:fragileitemtrackingapp/models/user_model.dart';
-import 'package:fragileitemtrackingapp/providers/user_provider.dart';
-import 'package:fragileitemtrackingapp/services/auth_methods.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 
 class NewHomeScreen extends StatefulWidget {

@@ -7,21 +7,23 @@ import '../services/auth_methods.dart';
 import '../utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
-  static final String id = 'login_screen';
+  static const String id = 'login_screen';
+
+  const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => new _LoginScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailIdController = new TextEditingController();
-  final TextEditingController _passwordController = new TextEditingController();
+  final TextEditingController _emailIdController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
 
-  var _textStyleBlack = new TextStyle(fontSize: 12.0, color: Colors.black);
-  var _textStyleGrey = new TextStyle(fontSize: 12.0, color: Colors.grey);
-  var _textStyleBlueGrey =
-      new TextStyle(fontSize: 12.0, color: Colors.blueGrey);
+  final _textStyleBlack = const TextStyle(fontSize: 12.0, color: Colors.black);
+  final _textStyleGrey = const TextStyle(fontSize: 12.0, color: Colors.grey);
+  final _textStyleBlueGrey =
+      const TextStyle(fontSize: 12.0, color: Colors.blueGrey);
 
   @override
   void dispose() {
@@ -54,20 +56,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       bottomNavigationBar: _bottomBar(),
       body: _body(),
     );
   }
 
   Widget _userIDEditContainer() {
-    return new Container(
-      child: new TextField(
+    return Container(
+      child: TextField(
         controller: _emailIdController,
-        decoration: new InputDecoration(
+        decoration: const InputDecoration(
             hintText: 'Phone number, email or username',
-            border: new OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.black),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.black),
             ),
             isDense: true),
         style: _textStyleBlack,
@@ -77,11 +79,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _passwordEditContainer() {
     return Container(
-      padding: EdgeInsets.only(top: 5.0),
+      padding: const EdgeInsets.only(top: 5.0),
       child: TextField(
         controller: _passwordController,
         obscureText: true,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
             hintText: 'Password',
             border: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.black),
@@ -97,20 +99,20 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: _logInUser,
       child: Container(
         alignment: Alignment.center,
-        margin: EdgeInsets.only(top: 10.0),
+        margin: const EdgeInsets.only(top: 10.0),
         width: 500.0,
         height: 40.0,
+        color: Colors.blue,
         child: _isLoading
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(
                   color: Colors.white,
                 ),
               )
-            : Text(
+            : const Text(
                 "Log In",
                 style: TextStyle(color: Colors.white),
               ),
-        color: Colors.blue,
       ),
     );
   }
@@ -129,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.grey.withOpacity(0.7),
               ),
               Padding(
-                  padding: EdgeInsets.only(bottom: 0.5),
+                  padding: const EdgeInsets.only(bottom: 0.5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -153,11 +155,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _body() {
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.all(25.0),
+      padding: const EdgeInsets.all(25.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 25.0, bottom: 15.0),
             child: Text(
               'FragileAT',
@@ -200,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text("OK"))
+                child: const Text("OK"))
           ],
         ),
       );
@@ -215,7 +217,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text("OK"))
+                child: const Text("OK"))
           ],
         ),
       );

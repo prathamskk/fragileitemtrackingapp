@@ -7,7 +7,7 @@ import 'package:fragileitemtrackingapp/screens/new_home_screen.dart';
 
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen();
+  const HomeScreen({super.key});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -28,8 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   addData() async {
-    UserProvider _userProvider = Provider.of(context, listen: false);
-    await _userProvider.refreshUser();
+    UserProvider userProvider = Provider.of(context, listen: false);
+    await userProvider.refreshUser();
   }
 
 
