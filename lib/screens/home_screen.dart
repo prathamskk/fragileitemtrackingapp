@@ -36,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     NewHomeScreen(),
-    // Text('Search Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     MapScreen(),
     ProfileScreen()
   ];
@@ -50,10 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //     title: const Text('FragileAT'),
-      //     backgroundColor: Colors.green
-      // ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
